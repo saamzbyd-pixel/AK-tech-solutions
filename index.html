@@ -4,265 +4,502 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080d19">
-  <meta name="description" content="AK Tech Solutions builds modern business websites, restaurant websites, e-commerce stores and web applications.">
+
   <title>AK Tech Solutions | Websites, Apps & Digital Solutions</title>
+  <meta name="description" content="AK Tech Solutions helps businesses build modern websites, web applications and digital solutions. Your Vision, Our Code.">
+  <meta name="theme-color" content="#080d1b">
+
+  <!-- Google Search Console verification -->
+  <meta name="google-site-verification" content="PASTE_YOUR_GOOGLE_VERIFICATION_CODE_HERE">
 
   <style>
     :root {
-      --bg: #080d19;
-      --panel: #101829;
-      --text: #f4f7ff;
-      --muted: #a4aec3;
-      --blue: #6485ff;
-      --cyan: #62e3f5;
+      --bg: #080d1b;
+      --surface: #10182b;
+      --surface-light: #151f36;
+      --blue: #4d8dff;
+      --cyan: #6ce5ff;
+      --white: #f5f7ff;
+      --muted: #a6b1c8;
       --border: rgba(255,255,255,.10);
-      --width: 1120px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
     body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
+      color: var(--white);
+      line-height: 1.7;
     }
 
-    a { color: inherit; text-decoration: none; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    .container { width: min(var(--width), 90%); margin: auto; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .nav {
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    .navbar {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(8,13,25,.92);
-      backdrop-filter: blur(18px);
+      z-index: 1000;
+      background: rgba(8,13,27,.94);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-inner {
       min-height: 76px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      justify-content: space-between;
+      gap: 24px;
     }
 
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 43px;
-      height: 43px;
-      border-radius: 13px;
-      background: linear-gradient(135deg, var(--blue), #3ccef0);
-      color: #07101f;
-      font-weight: 900;
-      letter-spacing: -1px;
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -.7px;
     }
 
-    .brand-name { font-weight: 800; letter-spacing: -.4px; }
-    .brand-tag { color: var(--muted); font-size: 11px; }
+    .logo span {
+      color: var(--blue);
+    }
 
-    .nav-links { display: flex; align-items: center; gap: 25px; }
-    .nav-links a { color: #d5dced; font-size: 14px; }
-    .nav-links a:hover { color: var(--cyan); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
 
-    .button {
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .nav-cta, .button {
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      gap: 8px;
-      padding: 12px 19px;
+      padding: 12px 21px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--blue), #3268e8);
+      color: white;
+      font-weight: 700;
       border: 1px solid transparent;
-      border-radius: 11px;
-      background: linear-gradient(120deg, var(--blue), #4bcde7);
-      color: #07101f;
-      font-weight: 800;
-      font-size: 14px;
+      transition: transform .2s, box-shadow .2s;
       cursor: pointer;
-      transition: transform .2s, filter .2s;
     }
 
-    .button:hover { transform: translateY(-2px); filter: brightness(1.08); }
-    .button-outline { background: transparent; color: var(--text); border-color: var(--border); }
+    .nav-cta:hover, .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(77,141,255,.24);
+    }
+
+    .button.secondary {
+      background: transparent;
+      border-color: var(--border);
+    }
 
     .menu-toggle {
       display: none;
-      background: var(--panel);
-      border: 1px solid var(--border);
       color: white;
-      border-radius: 9px;
-      padding: 9px 12px;
-      font-size: 21px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 22px;
       cursor: pointer;
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 105px 0 90px;
+      padding: 115px 0 105px;
       background:
-        radial-gradient(ellipse at 85% 20%, rgba(76,112,255,.18), transparent 36%),
-        radial-gradient(ellipse at 15% 80%, rgba(58,208,232,.09), transparent 35%);
+        radial-gradient(ellipse at 80% 15%, rgba(48,108,255,.19), transparent 42%),
+        radial-gradient(ellipse at 5% 70%, rgba(35,204,255,.08), transparent 35%);
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      align-items: center;
+      grid-template-columns: 1.15fr .85fr;
       gap: 60px;
+      align-items: center;
     }
 
     .eyebrow {
       display: inline-block;
-      border: 1px solid rgba(98,227,245,.24);
-      background: rgba(98,227,245,.07);
       color: var(--cyan);
-      border-radius: 50px;
-      padding: 7px 13px;
+      border: 1px solid rgba(108,229,255,.24);
+      background: rgba(108,229,255,.06);
+      border-radius: 30px;
+      padding: 7px 14px;
       font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1.4px;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
     }
 
     h1 {
-      margin: 22px 0;
-      font-size: clamp(42px, 6vw, 72px);
-      letter-spacing: -3px;
-      line-height: 1.08;
+      font-size: clamp(39px, 5.5vw, 66px);
+      line-height: 1.12;
+      letter-spacing: -2.4px;
+      margin-bottom: 24px;
     }
 
     .gradient-text {
-      background: linear-gradient(100deg, #8da5ff, var(--cyan));
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .lead { max-width: 590px; color: var(--muted); font-size: 18px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-    .small-note { margin-top: 22px; color: var(--muted); font-size: 13px; }
-
-    .visual {
-      padding: 25px;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 24px;
-      background: linear-gradient(145deg, rgba(22,34,59,.96), rgba(12,18,33,.96));
-      box-shadow: 0 25px 90px rgba(0,0,0,.28);
-      transform: rotate(1deg);
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 590px;
+      margin-bottom: 30px;
     }
 
-    .visual-top { display: flex; gap: 7px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
-    .dot { width: 9px; height: 9px; border-radius: 50%; background: #71809c; }
-    .code-line { height: 9px; border-radius: 8px; margin: 15px 0; background: #293753; }
-    .code-line:nth-child(2) { width: 85%; background: #536fe0; }
-    .code-line:nth-child(3) { width: 62%; }
-    .code-line:nth-child(4) { width: 76%; background: #2a7b8b; }
-    .code-line:nth-child(5) { width: 45%; }
-    .visual-card {
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .hero-note {
+      color: var(--muted);
+      font-size: 12px;
       margin-top: 22px;
-      padding: 19px;
-      border-radius: 15px;
-      background: rgba(100,133,255,.10);
-      border: 1px solid rgba(100,133,255,.2);
     }
-    .visual-card strong { display: block; font-size: 21px; }
-    .visual-card span { color: var(--muted); font-size: 13px; }
 
-    section { padding: 85px 0; }
-    .section-head { max-width: 690px; margin-bottom: 38px; }
-    .section-head h2 { margin: 12px 0; font-size: clamp(30px,4vw,44px); letter-spacing: -1.4px; line-height: 1.2; }
-    .section-head p { color: var(--muted); }
+    .hero-card {
+      position: relative;
+      background: linear-gradient(145deg, #15213b, #0c1222);
+      border: 1px solid rgba(108,229,255,.18);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.25);
+    }
 
-    .services-grid, .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 19px; }
+    .window-dots {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 28px;
+    }
 
-    .card {
-      padding: 26px;
-      border-radius: 18px;
+    .window-dots i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #4d8dff;
+    }
+
+    .window-dots i:nth-child(2) {
+      background: #6ce5ff;
+    }
+
+    .window-dots i:nth-child(3) {
+      background: #a5b4fc;
+    }
+
+    .code-line {
+      height: 10px;
+      border-radius: 6px;
+      margin: 15px 0;
+      background: #253654;
+    }
+
+    .code-line.blue {
+      background: linear-gradient(90deg, #4d8dff, #6ce5ff);
+      width: 72%;
+    }
+
+    .code-line.short {
+      width: 45%;
+    }
+
+    .code-line.medium {
+      width: 62%;
+    }
+
+    .mini-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .mini-card {
+      background: rgba(77,141,255,.09);
       border: 1px solid var(--border);
-      background: linear-gradient(145deg, rgba(19,29,49,.9), rgba(13,20,35,.9));
-      transition: border-color .2s, transform .2s;
+      padding: 16px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 12px;
     }
 
-    .card:hover { border-color: rgba(98,227,245,.45); transform: translateY(-4px); }
-    .icon {
+    .mini-card strong {
+      display: block;
+      color: var(--white);
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 48px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(29px, 4vw, 43px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .services-grid, .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card, .project-card {
+      padding: 27px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: transform .25s, border-color .25s;
+    }
+
+    .service-card:hover, .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(77,141,255,.55);
+    }
+
+    .service-icon {
       display: grid;
       place-items: center;
-      width: 47px;
-      height: 47px;
+      width: 50px;
+      height: 50px;
       border-radius: 13px;
-      background: rgba(100,133,255,.13);
+      background: rgba(77,141,255,.13);
+      color: var(--cyan);
       font-size: 23px;
+      margin-bottom: 20px;
     }
 
-    .card h3 { margin: 19px 0 8px; font-size: 19px; }
-    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .service-card h3, .project-card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
 
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: center; }
+    .service-card p, .project-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .about {
+      background: linear-gradient(180deg, transparent, rgba(21,31,54,.55), transparent);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      align-items: center;
+      gap: 55px;
+    }
+
     .about-panel {
+      min-height: 280px;
+      display: grid;
+      place-items: center;
+      text-align: center;
       padding: 30px;
       border: 1px solid var(--border);
       border-radius: 20px;
-      background: var(--panel);
+      background: radial-gradient(circle at center, rgba(77,141,255,.17), var(--surface));
     }
 
-    .check-list { list-style: none; padding: 0; }
-    .check-list li { margin: 15px 0; color: #d8e0f0; }
-    .check-list li::before { content: "✓"; color: var(--cyan); font-weight: 900; margin-right: 10px; }
+    .about-panel .big-ak {
+      font-size: 75px;
+      font-weight: 900;
+      letter-spacing: -5px;
+    }
 
-    .project-card { overflow: hidden; padding: 0; }
-    .project-art {
-      min-height: 155px;
+    .about-panel p {
+      color: var(--cyan);
+    }
+
+    .about-copy h2 {
+      font-size: clamp(29px, 4vw, 40px);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin-bottom: 15px;
+    }
+
+    .check-list {
+      list-style: none;
+      margin-top: 22px;
+    }
+
+    .check-list li {
+      margin: 10px 0;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      color: var(--cyan);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .project-label {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--cyan);
+      background: rgba(108,229,255,.08);
+      padding: 5px 9px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .project-card .project-visual {
+      height: 125px;
+      border-radius: 11px;
+      margin-bottom: 22px;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(108,229,255,.3), transparent 35%),
+        linear-gradient(135deg, #1a2b4b, #10182b);
+      border: 1px solid var(--border);
       display: grid;
       place-items: center;
-      padding: 20px;
-      background: radial-gradient(circle at 25% 30%, #304b91, #131c33 72%);
-      font-size: 40px;
-    }
-    .project-copy { padding: 22px; }
-    .project-copy p { margin-bottom: 0; }
-
-    .demo-label {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 4px 8px;
-      border-radius: 5px;
-      background: rgba(98,227,245,.09);
       color: var(--cyan);
-      font-size: 11px;
+      font-size: 29px;
+      font-weight: bold;
     }
 
     .contact-box {
-      padding: 48px;
-      border-radius: 24px;
-      border: 1px solid rgba(98,227,245,.2);
-      background: radial-gradient(ellipse at top right, rgba(100,133,255,.17), transparent 55%), var(--panel);
+      padding: 50px;
+      border: 1px solid rgba(77,141,255,.28);
+      border-radius: 22px;
       text-align: center;
+      background:
+        radial-gradient(ellipse at top, rgba(77,141,255,.16), transparent 65%),
+        var(--surface);
     }
 
-    .contact-box h2 { font-size: clamp(30px,4vw,45px); line-height: 1.2; margin: 14px 0; }
-    .contact-box p { color: var(--muted); max-width: 600px; margin: 0 auto 25px; }
-    .contact-details { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
-    .contact-details a { color: #dce5f6; font-size: 14px; overflow-wrap: anywhere; }
+    .contact-box h2 {
+      font-size: clamp(29px, 4vw, 42px);
+      margin-bottom: 15px;
+    }
 
-    footer { padding: 28px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; }
+    .contact-box p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 25px;
+    }
+
+    .contact-details {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-details a:hover {
+      color: var(--cyan);
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner strong {
+      color: var(--white);
+    }
 
     @media (max-width: 850px) {
-      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 35px; }
-      .visual { max-width: 520px; transform: none; }
-      .services-grid, .projects-grid { grid-template-columns: repeat(2,1fr); }
-      .hero { padding-top: 75px; }
+      .nav-links {
+        gap: 15px;
+      }
+
+      .hero-grid, .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 80px 0;
+      }
+
+      .hero-card {
+        max-width: 600px;
+      }
+
+      .services-grid, .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 650px) {
-      .nav-inner { min-height: 68px; }
-      .menu-toggle { display: block; }
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
       .nav-links {
         display: none;
         position: absolute;
@@ -270,48 +507,80 @@
         left: 0;
         right: 0;
         padding: 20px 5%;
-        background: #0c1322;
+        background: #0c1324;
         border-bottom: 1px solid var(--border);
         flex-direction: column;
         align-items: stretch;
-        gap: 18px;
+        gap: 0;
       }
-      .nav-links.open { display: flex; }
-      .nav-links .button { width: 100%; }
-      h1 { letter-spacing: -1.8px; }
-      .lead { font-size: 16px; }
-      section { padding: 62px 0; }
-      .services-grid, .projects-grid { grid-template-columns: 1fr; }
-      .card { padding: 23px; }
-      .contact-box { padding: 30px 20px; }
-      .brand-tag { font-size: 10px; }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 12px 0;
+      }
+
+      .nav-cta {
+        text-align: center;
+        margin-top: 8px;
+      }
+
+      h1 {
+        letter-spacing: -1.5px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .services-grid, .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        padding: 30px 20px;
+      }
+
+      .hero-buttons .button {
+        width: 100%;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header class="nav">
+  <header class="navbar">
     <div class="container nav-inner">
-      <a class="brand" href="#home" aria-label="AK Tech Solutions home">
-        <span class="brand-mark">AK</span>
-        <span>
-          <span class="brand-name">AK Tech Solutions</span><br>
-          <span class="brand-tag">Websites • Apps • Your Vision, Our Code</span>
-        </span>
+      <a class="logo" href="#home" aria-label="AK Tech Solutions home">
+        AK <span>Tech Solutions</span>
       </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <button class="menu-toggle" id="menuToggle"
+        aria-label="Toggle navigation" aria-expanded="false">
+        ☰
+      </button>
 
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#home">Home</a>
         <a href="#services">Services</a>
-        <a href="#about">Why Us</a>
-        <a href="#projects">Demo Projects</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <a class="button" href="https://wa.me/919908070815?text=Hi%20AK%20Tech%20Solutions%2C%20I%20want%20to%20discuss%20a%20website%20project.">Get a Quote ↗</a>
+        <a class="nav-cta"
+          href="https://wa.me/919908070815?text=Hello%20AK%20Tech%20Solutions%2C%20I%20am%20interested%20in%20your%20services."
+          target="_blank" rel="noopener noreferrer">Let's Talk</a>
       </nav>
     </div>
   </header>
@@ -320,26 +589,48 @@
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">YOUR DIGITAL PARTNER</span>
-          <h1>Your vision.<br>Our code.<br><span class="gradient-text">Your growth.</span></h1>
-          <p class="lead">We help businesses build a stronger online presence with modern websites, online stores and tailored web solutions.</p>
-          <div class="hero-actions">
-            <a class="button" href="#contact">Let's Build Together ↗</a>
-            <a class="button button-outline" href="#services">Explore Services</a>
+          <span class="eyebrow">Digital solutions for growing businesses</span>
+          <h1>We Build Digital Experiences That <span class="gradient-text">Move You Forward.</span></h1>
+          <p>
+            We help businesses establish their online presence with modern
+            websites, web applications and practical digital solutions.
+            Your goals come first; we build around your vision.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="button"
+              href="https://wa.me/919908070815?text=Hello%20AK%20Tech%20Solutions%2C%20I%20want%20to%20discuss%20a%20website%20project."
+              target="_blank" rel="noopener noreferrer">Start a Project ↗</a>
+            <a class="button secondary" href="#services">Explore Services</a>
           </div>
-          <p class="small-note">Thoughtful design · Responsive websites · Personal support</p>
+
+          <div class="hero-note">Websites • Apps • Your Vision, Our Code.</div>
         </div>
 
-        <div class="visual" aria-label="Decorative code illustration">
-          <div class="visual-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="hero-card" aria-label="Illustration of a digital project">
+          <div class="window-dots"><i></i><i></i><i></i></div>
+          <div class="code-line blue"></div>
+          <div class="code-line medium"></div>
+          <div class="code-line short"></div>
           <div class="code-line"></div>
-          <div class="code-line"></div>
-          <div class="code-line"></div>
-          <div class="code-line"></div>
-          <div class="code-line"></div>
-          <div class="visual-card">
-            <strong>Ideas into experiences.</strong>
-            <span>Digital solutions made for your goals.</span>
+          <div class="code-line medium"></div>
+          <div class="mini-cards">
+            <div class="mini-card">
+              <strong>Web Design</strong>
+              Built around your brand
+            </div>
+            <div class="mini-card">
+              <strong>Development</strong>
+              Made for your goals
+            </div>
+            <div class="mini-card">
+              <strong>Responsive</strong>
+              Mobile-friendly layouts
+            </div>
+            <div class="mini-card">
+              <strong>Support</strong>
+              Help as you grow
+            </div>
           </div>
         </div>
       </div>
@@ -347,66 +638,78 @@
 
     <section id="services">
       <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">WHAT WE DO</span>
-          <h2>Digital solutions for your next big idea.</h2>
-          <p>From your first business website to a custom online experience, let's build something useful for your customers.</p>
+        <div class="section-heading">
+          <span class="eyebrow">What we do</span>
+          <h2>Solutions Built Around Your Business</h2>
+          <p>Practical digital services to help your business get online and connect with customers.</p>
         </div>
 
         <div class="services-grid">
-          <article class="card">
-            <div class="icon">✦</div>
-            <h3>Business Websites</h3>
-            <p>Professional, mobile-friendly websites that explain your services and help customers reach you.</p>
+          <article class="service-card">
+            <div class="service-icon">⌘</div>
+            <h3>Website Development</h3>
+            <p>Modern, responsive business websites designed to present your services and help customers reach you.</p>
           </article>
-          <article class="card">
-            <div class="icon">🍽</div>
-            <h3>Restaurant Websites</h3>
-            <p>Digital menus, food galleries, opening hours, maps and convenient WhatsApp ordering options.</p>
+
+          <article class="service-card">
+            <div class="service-icon">✦</div>
+            <h3>Website Design</h3>
+            <p>Clean layouts, consistent branding and user-friendly experiences tailored to your business.</p>
           </article>
-          <article class="card">
-            <div class="icon">🛍</div>
-            <h3>E-commerce Websites</h3>
-            <p>Product displays and online shopping experiences planned around your business needs.</p>
-          </article>
-          <article class="card">
-            <div class="icon">⌘</div>
+
+          <article class="service-card">
+            <div class="service-icon">▣</div>
             <h3>Web Applications</h3>
-            <p>Custom web tools and dashboards designed to support everyday business workflows.</p>
+            <p>Custom web-based tools and application concepts designed around specific business needs.</p>
           </article>
-          <article class="card">
-            <div class="icon">▣</div>
-            <h3>Mobile App Solutions</h3>
-            <p>Planning and development support for mobile-first digital product ideas.</p>
+
+          <article class="service-card">
+            <div class="service-icon">↗</div>
+            <h3>Business Landing Pages</h3>
+            <p>Focused pages for your business, service, product or marketing campaign.</p>
           </article>
-          <article class="card">
-            <div class="icon">↗</div>
+
+          <article class="service-card">
+            <div class="service-icon">◈</div>
             <h3>Website Improvements</h3>
-            <p>Help with refreshing existing pages, improving usability and making websites work better on phones.</p>
+            <p>Help refreshing existing pages, improving mobile layouts and making contact information easier to find.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-icon">◎</div>
+            <h3>Digital Consultation</h3>
+            <p>Discuss your goals and explore suitable website and digital options for your business.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="about">
+    <section class="about" id="about">
       <div class="container about-grid">
-        <div>
-          <span class="eyebrow">WHY AK TECH SOLUTIONS</span>
-          <div class="section-head">
-            <h2>Practical technology. Personal attention.</h2>
-            <p>Every business has different goals. We start by understanding what you need, then plan a solution that fits your priorities and budget.</p>
+        <div class="about-panel">
+          <div>
+            <div class="big-ak">AK<span class="gradient-text">.</span></div>
+            <p>Your Vision, Our Code.</p>
           </div>
-          <a class="button button-outline" href="#contact">Discuss Your Project ↗</a>
         </div>
 
-        <div class="about-panel">
-          <h3>A clear process from idea to launch</h3>
+        <div class="about-copy">
+          <span class="eyebrow">About AK Tech Solutions</span>
+          <h2>Technology Should Help Your Business Move Forward.</h2>
+          <p>
+            AK Tech Solutions is focused on helping businesses build a
+            professional digital presence through websites and practical
+            technology solutions.
+          </p>
+          <p>
+            We believe in clear communication, useful design and solutions
+            shaped around each client's needs and budget.
+          </p>
           <ul class="check-list">
-            <li>Understand your business and customers</li>
-            <li>Agree on features, scope and budget</li>
-            <li>Build and review the design together</li>
-            <li>Test on mobile and desktop</li>
-            <li>Help you prepare for launch</li>
+            <li>Responsive, mobile-friendly design</li>
+            <li>Clear communication about project requirements</li>
+            <li>Solutions planned around your business goals</li>
+            <li>Direct contact to discuss your project</li>
           </ul>
         </div>
       </div>
@@ -414,51 +717,58 @@
 
     <section id="projects">
       <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">CONCEPT SHOWCASE</span>
-          <h2>Ideas we can bring to life.</h2>
-          <p>These are illustrative concepts showing the kinds of projects we can develop. They are not presented as completed client work.</p>
+        <div class="section-heading">
+          <span class="eyebrow">Our work</span>
+          <h2>Project Concepts</h2>
+          <p>Example project directions that can be adapted to your requirements.</p>
         </div>
 
         <div class="projects-grid">
-          <article class="card project-card">
-            <div class="project-art">🍜</div>
-            <div class="project-copy">
-              <h3>Restaurant Website</h3>
-              <p>Menu, food photography, location and customer enquiries.</p>
-              <span class="demo-label">CONCEPT DEMO</span>
-            </div>
+          <article class="project-card">
+            <div class="project-visual">01 / WEB</div>
+            <span class="project-label">Concept example</span>
+            <h3>Business Website</h3>
+            <p>A professional online presence with business details, service information and contact options.</p>
           </article>
-          <article class="card project-card">
-            <div class="project-art">🛒</div>
-            <div class="project-copy">
-              <h3>Online Store</h3>
-              <p>Product pages, shopping experience and order enquiries.</p>
-              <span class="demo-label">CONCEPT DEMO</span>
-            </div>
+
+          <article class="project-card">
+            <div class="project-visual">02 / FOOD</div>
+            <span class="project-label">Concept example</span>
+            <h3>Restaurant Website</h3>
+            <p>A restaurant page concept featuring a menu, opening information, location and customer enquiries.</p>
           </article>
-          <article class="card project-card">
-            <div class="project-art">📊</div>
-            <div class="project-copy">
-              <h3>Business Dashboard</h3>
-              <p>A concept for organising business information in one place.</p>
-              <span class="demo-label">CONCEPT DEMO</span>
-            </div>
+
+          <article class="project-card">
+            <div class="project-visual">03 / SHOP</div>
+            <span class="project-label">Concept example</span>
+            <h3>Online Storefront</h3>
+            <p>A product showcase concept for presenting items and helping customers discover a business.</p>
           </article>
         </div>
+
+        <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:20px;">
+          These are illustrative concepts, not claims of completed client projects.
+        </p>
       </div>
     </section>
 
     <section id="contact">
       <div class="container">
         <div class="contact-box">
-          <span class="eyebrow">LET'S TALK</span>
-          <h2>Have an idea? <span class="gradient-text">Let's build it.</span></h2>
-          <p>Tell us a little about your business and what you want to create. We'll discuss your requirements and the next steps.</p>
-          <a class="button" href="https://wa.me/919908070815?text=Hi%20AK%20Tech%20Solutions%2C%20I%20would%20like%20to%20discuss%20a%20project.">Chat on WhatsApp ↗</a>
+          <span class="eyebrow">Let's work together</span>
+          <h2>Have an Idea? Let's Build It.</h2>
+          <p>
+            Tell us about your business, your goals and what you want to
+            create. Contact AK Tech Solutions to start the conversation.
+          </p>
+
+          <a class="button"
+            href="https://wa.me/919908070815?text=Hello%20AK%20Tech%20Solutions%2C%20I%20would%20like%20to%20discuss%20a%20project."
+            target="_blank" rel="noopener noreferrer">Contact Us on WhatsApp ↗</a>
+
           <div class="contact-details">
-            <a href="mailto:saamzbyd@gmail.com">✉ saamzbyd@gmail.com</a>
             <a href="tel:+919908070815">☎ +91 9908070815</a>
+            <a href="mailto:saamzbyd@gmail.com">✉ saamzbyd@gmail.com</a>
           </div>
         </div>
       </div>
@@ -467,8 +777,8 @@
 
   <footer>
     <div class="container footer-inner">
-      <span>© <span id="year"></span> AK Tech Solutions. All rights reserved.</span>
-      <span>Websites • Apps • Your Vision, Our Code</span>
+      <div><strong>AK Tech Solutions</strong> — Websites • Apps • Your Vision, Our Code.</div>
+      <div>© <span id="year"></span> AK Tech Solutions. All rights reserved.</div>
     </div>
   </footer>
 
@@ -476,18 +786,16 @@
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
 
-    menuToggle.addEventListener("click", () => {
+    menuToggle.addEventListener("click", function () {
       const isOpen = navLinks.classList.toggle("open");
       menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
       menuToggle.textContent = isOpen ? "×" : "☰";
     });
 
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
+    document.querySelectorAll("#navLinks a").forEach(function (link) {
+      link.addEventListener("click", function () {
         navLinks.classList.remove("open");
         menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open navigation");
         menuToggle.textContent = "☰";
       });
     });
