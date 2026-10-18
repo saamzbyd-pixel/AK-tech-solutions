@@ -4,803 +4,342 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>AK Tech Solutions | Websites, Apps & Digital Solutions</title>
-  <meta name="description" content="AK Tech Solutions helps businesses build modern websites, web applications and digital solutions. Your Vision, Our Code.">
   <meta name="theme-color" content="#080d1b">
-
-  <!-- Google Search Console verification -->
-  <meta name="google-site-verification" content="UURD84J6IPWBe9-FNgf118TfrhRSpOK1SevyVB2NKYQ" />
-
+  <meta name="description" content="AK Tech Solutions builds modern business websites, restaurant websites, e-commerce websites, web applications and mobile apps.">
+  <meta name="google-site-verification" content="UURD84J6IPWBe9-FNgf118TfrhRSpOK1SevyVB2NKYQ">
+  <title>AK Tech Solutions | Websites & Apps</title>
   <style>
-    :root {
-      --bg: #080d1b;
-      --surface: #10182b;
-      --surface-light: #151f36;
-      --blue: #4d8dff;
-      --cyan: #6ce5ff;
-      --white: #f5f7ff;
-      --muted: #a6b1c8;
-      --border: rgba(255,255,255,.10);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--white);
+      font-family: Arial, sans-serif;
+      background: #080d1b;
+      color: #f4f7ff;
       line-height: 1.7;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
+    a { color: inherit; text-decoration: none; }
+    .container { width: 90%; max-width: 1120px; margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: #080d1bf5;
+      border-bottom: 1px solid #26324a;
     }
-
-    button, a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .container {
-      width: min(1120px, 90%);
-      margin: auto;
-    }
-
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(8,13,27,.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: -.7px;
-    }
-
-    .logo span {
-      color: var(--blue);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 27px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 14px;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--cyan);
-    }
-
-    .nav-cta, .button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 12px 21px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, var(--blue), #3268e8);
-      color: white;
-      font-weight: 700;
-      border: 1px solid transparent;
-      transition: transform .2s, box-shadow .2s;
-      cursor: pointer;
-    }
-
-    .nav-cta:hover, .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(77,141,255,.24);
-    }
-
-    .button.secondary {
-      background: transparent;
-      border-color: var(--border);
-    }
-
-    .menu-toggle {
-      display: none;
-      color: white;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      border-radius: 8px;
-      padding: 8px 12px;
-      font-size: 22px;
-      cursor: pointer;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 115px 0 105px;
-      background:
-        radial-gradient(ellipse at 80% 15%, rgba(48,108,255,.19), transparent 42%),
-        radial-gradient(ellipse at 5% 70%, rgba(35,204,255,.08), transparent 35%);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      color: var(--cyan);
-      border: 1px solid rgba(108,229,255,.24);
-      background: rgba(108,229,255,.06);
-      border-radius: 30px;
-      padding: 7px 14px;
-      font-size: 12px;
-      letter-spacing: 1.3px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    h1 {
-      font-size: clamp(39px, 5.5vw, 66px);
-      line-height: 1.12;
-      letter-spacing: -2.4px;
-      margin-bottom: 24px;
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, var(--blue), var(--cyan));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 17px;
-      max-width: 590px;
-      margin-bottom: 30px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-    }
-
-    .hero-note {
-      color: var(--muted);
-      font-size: 12px;
-      margin-top: 22px;
-    }
-
-    .hero-card {
-      position: relative;
-      background: linear-gradient(145deg, #15213b, #0c1222);
-      border: 1px solid rgba(108,229,255,.18);
-      border-radius: 22px;
-      padding: 28px;
-      box-shadow: 0 25px 80px rgba(0,0,0,.25);
-    }
-
-    .window-dots {
-      display: flex;
-      gap: 7px;
-      margin-bottom: 28px;
-    }
-
-    .window-dots i {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #4d8dff;
-    }
-
-    .window-dots i:nth-child(2) {
-      background: #6ce5ff;
-    }
-
-    .window-dots i:nth-child(3) {
-      background: #a5b4fc;
-    }
-
-    .code-line {
-      height: 10px;
-      border-radius: 6px;
-      margin: 15px 0;
-      background: #253654;
-    }
-
-    .code-line.blue {
-      background: linear-gradient(90deg, #4d8dff, #6ce5ff);
-      width: 72%;
-    }
-
-    .code-line.short {
-      width: 45%;
-    }
-
-    .code-line.medium {
-      width: 62%;
-    }
-
-    .mini-cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .mini-card {
-      background: rgba(77,141,255,.09);
-      border: 1px solid var(--border);
-      padding: 16px;
-      border-radius: 12px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .mini-card strong {
-      display: block;
-      color: var(--white);
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    section {
-      padding: 88px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 48px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(29px, 4vw, 43px);
-      line-height: 1.2;
-      letter-spacing: -1px;
-      margin-bottom: 15px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-    }
-
-    .services-grid, .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    nav {
+      min-height: 75px; display: flex;
+      justify-content: space-between; align-items: center;
       gap: 20px;
     }
-
-    .service-card, .project-card {
-      padding: 27px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      transition: transform .25s, border-color .25s;
+    .logo { font-size: 23px; font-weight: 800; }
+    .logo span, .blue { color: #65a0ff; }
+    .navlinks { display: flex; align-items: center; gap: 22px; }
+    .navlinks a { color: #c0cbe0; font-size: 14px; }
+    .btn {
+      display: inline-block; padding: 12px 20px;
+      border: 0; border-radius: 9px;
+      background: #397cf6; color: white !important;
+      font-weight: bold; cursor: pointer;
     }
-
-    .service-card:hover, .project-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(77,141,255,.55);
+    .btn:hover { background: #2864d4; }
+    .hero {
+      padding: 100px 0;
+      background: radial-gradient(ellipse at top right, #214a8b55, transparent 55%);
     }
-
-    .service-icon {
-      display: grid;
-      place-items: center;
-      width: 50px;
-      height: 50px;
-      border-radius: 13px;
-      background: rgba(77,141,255,.13);
-      color: var(--cyan);
-      font-size: 23px;
-      margin-bottom: 20px;
+    .hero-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 45px; align-items: center;
     }
-
-    .service-card h3, .project-card h3 {
-      font-size: 19px;
-      margin-bottom: 10px;
+    .eyebrow {
+      color: #70ddff; text-transform: uppercase;
+      font-size: 12px; letter-spacing: 2px; font-weight: bold;
     }
-
-    .service-card p, .project-card p {
-      color: var(--muted);
-      font-size: 14px;
+    h1 { font-size: clamp(40px, 5vw, 64px); line-height: 1.12; margin: 18px 0; }
+    .hero p, .muted { color: #aebbd1; }
+    .hero p { font-size: 17px; margin-bottom: 25px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .secondary { border: 1px solid #34425c; background: transparent; }
+    .preview {
+      padding: 28px; border-radius: 20px;
+      border: 1px solid #344b70;
+      background: linear-gradient(140deg, #172746, #0d1424);
+      box-shadow: 0 25px 70px #0005;
     }
-
-    .about {
-      background: linear-gradient(180deg, transparent, rgba(21,31,54,.55), transparent);
+    .preview h2 { font-size: 28px; line-height: 1.3; margin: 25px 0 12px; }
+    .preview-card {
+      margin-top: 22px; padding: 18px;
+      border: 1px solid #34425c; border-radius: 12px;
+      background: #ffffff08;
     }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      align-items: center;
-      gap: 55px;
+    section { padding: 80px 0; }
+    .section-heading { text-align: center; max-width: 700px; margin: 0 auto 38px; }
+    .section-heading h2 { font-size: clamp(30px, 4vw, 43px); line-height: 1.2; margin: 10px 0; }
+    .section-heading p { color: #aebbd1; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      padding: 25px; border-radius: 15px;
+      border: 1px solid #26344d; background: #10182b;
+      transition: transform .2s, border-color .2s;
     }
-
-    .about-panel {
-      min-height: 280px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: radial-gradient(circle at center, rgba(77,141,255,.17), var(--surface));
+    .card:hover { transform: translateY(-4px); border-color: #5792ff; }
+    .icon { font-size: 28px; margin-bottom: 10px; }
+    .card h3 { margin-bottom: 8px; }
+    .card p { color: #aebbd1; font-size: 14px; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .brand-art {
+      padding: 60px 20px; text-align: center;
+      background: #10182b; border: 1px solid #26344d; border-radius: 20px;
     }
-
-    .about-panel .big-ak {
-      font-size: 75px;
-      font-weight: 900;
-      letter-spacing: -5px;
-    }
-
-    .about-panel p {
-      color: var(--cyan);
-    }
-
-    .about-copy h2 {
-      font-size: clamp(29px, 4vw, 40px);
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
-
-    .about-copy p {
-      color: var(--muted);
-      margin-bottom: 15px;
-    }
-
-    .check-list {
-      list-style: none;
-      margin-top: 22px;
-    }
-
-    .check-list li {
-      margin: 10px 0;
-    }
-
-    .check-list li::before {
-      content: "✓";
-      color: var(--cyan);
-      font-weight: bold;
-      margin-right: 10px;
-    }
-
-    .project-label {
-      display: inline-block;
-      font-size: 11px;
-      color: var(--cyan);
-      background: rgba(108,229,255,.08);
-      padding: 5px 9px;
-      border-radius: 6px;
-      margin-bottom: 16px;
-    }
-
-    .project-card .project-visual {
-      height: 125px;
-      border-radius: 11px;
-      margin-bottom: 22px;
-      background:
-        radial-gradient(circle at 75% 20%, rgba(108,229,255,.3), transparent 35%),
-        linear-gradient(135deg, #1a2b4b, #10182b);
-      border: 1px solid var(--border);
-      display: grid;
-      place-items: center;
-      color: var(--cyan);
-      font-size: 29px;
-      font-weight: bold;
-    }
-
+    .brand-art strong { font-size: 75px; }
+    .checks { list-style: none; margin: 18px 0; }
+    .checks li { margin: 9px 0; }
+    .checks li::before { content: "✓ "; color: #70ddff; font-weight: bold; }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .step { border-top: 2px solid #397cf6; padding-top: 17px; }
+    .step p { color: #aebbd1; font-size: 14px; }
+    .tag { color: #70ddff; font-size: 11px; text-transform: uppercase; font-weight: bold; }
+    .faq { max-width: 800px; margin: auto; }
+    details { padding: 18px; margin-bottom: 12px; background: #10182b; border: 1px solid #26344d; border-radius: 10px; }
+    summary { cursor: pointer; font-weight: bold; }
+    details p { color: #aebbd1; margin-top: 10px; }
     .contact-box {
-      padding: 50px;
-      border: 1px solid rgba(77,141,255,.28);
-      border-radius: 22px;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at top, rgba(77,141,255,.16), transparent 65%),
-        var(--surface);
+      padding: 40px; text-align: center;
+      border: 1px solid #344b70; border-radius: 20px;
+      background: #10182b;
     }
-
-    .contact-box h2 {
-      font-size: clamp(29px, 4vw, 42px);
-      margin-bottom: 15px;
+    .contact-box > p { color: #aebbd1; margin: 12px auto 20px; max-width: 650px; }
+    form { max-width: 700px; margin: 30px auto 0; text-align: left; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .full { grid-column: 1 / -1; }
+    label { font-size: 13px; font-weight: bold; }
+    input, select, textarea {
+      width: 100%; padding: 12px; color: white;
+      background: #080d1b; border: 1px solid #34425c;
+      border-radius: 8px; font: inherit;
     }
-
-    .contact-box p {
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto 25px;
+    textarea { min-height: 110px; resize: vertical; }
+    form button { margin-top: 16px; }
+    .small { color: #aebbd1; font-size: 12px; margin-top: 10px; }
+    .contact-links { margin-top: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    footer { padding: 25px 0; border-top: 1px solid #26344d; color: #aebbd1; font-size: 13px; }
+    .footer-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .whatsapp {
+      position: fixed; bottom: 18px; right: 18px;
+      z-index: 20; background: #19a765; color: white;
+      padding: 12px 17px; border-radius: 30px; font-weight: bold;
     }
-
-    .contact-details {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px 24px;
-      margin-top: 25px;
-      color: var(--muted);
-      font-size: 14px;
+    @media (max-width: 800px) {
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .navlinks { gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
     }
-
-    .contact-details a:hover {
-      color: var(--cyan);
-    }
-
-    footer {
-      padding: 28px 0;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .footer-inner strong {
-      color: var(--white);
-    }
-
-    @media (max-width: 850px) {
-      .nav-links {
-        gap: 15px;
-      }
-
-      .hero-grid, .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding: 80px 0;
-      }
-
-      .hero-card {
-        max-width: 600px;
-      }
-
-      .services-grid, .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 650px) {
-      .nav-inner {
-        min-height: 68px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 68px;
-        left: 0;
-        right: 0;
-        padding: 20px 5%;
-        background: #0c1324;
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        padding: 12px 0;
-      }
-
-      .nav-cta {
-        text-align: center;
-        margin-top: 8px;
-      }
-
-      h1 {
-        letter-spacing: -1.5px;
-      }
-
-      section {
-        padding: 65px 0;
-      }
-
-      .services-grid, .projects-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-box {
-        padding: 30px 20px;
-      }
-
-      .hero-buttons .button {
-        width: 100%;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *, *::before, *::after {
-        transition-duration: .01ms !important;
-      }
+    @media (max-width: 560px) {
+      .hero { padding: 65px 0; }
+      section { padding: 60px 0; }
+      .grid, .steps, .form-grid { grid-template-columns: 1fr; }
+      .full { grid-column: auto; }
+      .contact-box { padding: 25px 16px; }
+      nav { align-items: flex-start; padding: 15px 0; }
+      .navlinks { max-width: 60%; }
+      .navlinks a { font-size: 12px; }
     }
   </style>
 </head>
-
 <body>
-  <header class="navbar">
-    <div class="container nav-inner">
-      <a class="logo" href="#home" aria-label="AK Tech Solutions home">
-        AK <span>Tech Solutions</span>
-      </a>
-
-      <button class="menu-toggle" id="menuToggle"
-        aria-label="Toggle navigation" aria-expanded="false">
-        ☰
-      </button>
-
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cta"
-          href="https://wa.me/919908070815?text=Hello%20AK%20Tech%20Solutions%2C%20I%20am%20interested%20in%20your%20services."
-          target="_blank" rel="noopener noreferrer">Let's Talk</a>
-      </nav>
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">AK <span>Tech Solutions</span></a>
+    <div class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#work">Portfolio</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn" href="#contact">Get a Quote</a>
     </div>
-  </header>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Digital solutions for growing businesses</span>
-          <h1>We Build Digital Experiences That <span class="gradient-text">Move You Forward.</span></h1>
-          <p>
-            We help businesses establish their online presence with modern
-            websites, web applications and practical digital solutions.
-            Your goals come first; we build around your vision.
-          </p>
-
-          <div class="hero-buttons">
-            <a class="button"
-              href="https://wa.me/919908070815?text=Hello%20AK%20Tech%20Solutions%2C%20I%20want%20to%20discuss%20a%20website%20project."
-              target="_blank" rel="noopener noreferrer">Start a Project ↗</a>
-            <a class="button secondary" href="#services">Explore Services</a>
-          </div>
-
-          <div class="hero-note">Websites • Apps • Your Vision, Our Code.</div>
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Websites • Apps • Digital Solutions</span>
+        <h1>Your Business Deserves a <span class="blue">Better Website.</span></h1>
+        <p>We create modern, mobile-friendly websites and digital experiences that help businesses showcase their brand, connect with customers and grow online.</p>
+        <div class="actions">
+          <a class="btn" href="#contact">Get a Free Quote ↗</a>
+          <a class="btn secondary" href="#work">View Demo Projects</a>
         </div>
-
-        <div class="hero-card" aria-label="Illustration of a digital project">
-          <div class="window-dots"><i></i><i></i><i></i></div>
-          <div class="code-line blue"></div>
-          <div class="code-line medium"></div>
-          <div class="code-line short"></div>
-          <div class="code-line"></div>
-          <div class="code-line medium"></div>
-          <div class="mini-cards">
-            <div class="mini-card">
-              <strong>Web Design</strong>
-              Built around your brand
-            </div>
-            <div class="mini-card">
-              <strong>Development</strong>
-              Made for your goals
-            </div>
-            <div class="mini-card">
-              <strong>Responsive</strong>
-              Mobile-friendly layouts
-            </div>
-            <div class="mini-card">
-              <strong>Support</strong>
-              Help as you grow
-            </div>
-          </div>
+        <p style="margin-top:20px;font-size:13px">✓ Responsive design &nbsp; ✓ Clear communication &nbsp; ✓ Built around your goals</p>
+      </div>
+      <div class="preview">
+        <span class="eyebrow">Your next website</span>
+        <h2>Make a great first impression online.</h2>
+        <p class="muted">A clear message. A modern design. A simple way for customers to contact you.</p>
+        <div class="preview-card">
+          <span class="blue">✦ &nbsp; DESIGN THAT WORKS</span>
+          <p class="muted" style="margin-top:10px">Services · About · Projects · Contact</p>
+        </div>
+        <div class="preview-card">
+          <strong>Let's build something useful.</strong>
+          <p class="muted">Your Vision, Our Code.</p>
         </div>
       </div>
-    </section>
-
-    <section id="services">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">What we do</span>
-          <h2>Solutions Built Around Your Business</h2>
-          <p>Practical digital services to help your business get online and connect with customers.</p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-icon">⌘</div>
-            <h3>Website Development</h3>
-            <p>Modern, responsive business websites designed to present your services and help customers reach you.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">✦</div>
-            <h3>Website Design</h3>
-            <p>Clean layouts, consistent branding and user-friendly experiences tailored to your business.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">▣</div>
-            <h3>Web Applications</h3>
-            <p>Custom web-based tools and application concepts designed around specific business needs.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">↗</div>
-            <h3>Business Landing Pages</h3>
-            <p>Focused pages for your business, service, product or marketing campaign.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">◈</div>
-            <h3>Website Improvements</h3>
-            <p>Help refreshing existing pages, improving mobile layouts and making contact information easier to find.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="service-icon">◎</div>
-            <h3>Digital Consultation</h3>
-            <p>Discuss your goals and explore suitable website and digital options for your business.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="about" id="about">
-      <div class="container about-grid">
-        <div class="about-panel">
-          <div>
-            <div class="big-ak">AK<span class="gradient-text">.</span></div>
-            <p>Your Vision, Our Code.</p>
-          </div>
-        </div>
-
-        <div class="about-copy">
-          <span class="eyebrow">About AK Tech Solutions</span>
-          <h2>Technology Should Help Your Business Move Forward.</h2>
-          <p>
-            AK Tech Solutions is focused on helping businesses build a
-            professional digital presence through websites and practical
-            technology solutions.
-          </p>
-          <p>
-            We believe in clear communication, useful design and solutions
-            shaped around each client's needs and budget.
-          </p>
-          <ul class="check-list">
-            <li>Responsive, mobile-friendly design</li>
-            <li>Clear communication about project requirements</li>
-            <li>Solutions planned around your business goals</li>
-            <li>Direct contact to discuss your project</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Our work</span>
-          <h2>Project Concepts</h2>
-          <p>Example project directions that can be adapted to your requirements.</p>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-visual">01 / WEB</div>
-            <span class="project-label">Concept example</span>
-            <h3>Business Website</h3>
-            <p>A professional online presence with business details, service information and contact options.</p>
-          </article>
-
-          <article class="project-card">
-            <div class="project-visual">02 / FOOD</div>
-            <span class="project-label">Concept example</span>
-            <h3>Restaurant Website</h3>
-            <p>A restaurant page concept featuring a menu, opening information, location and customer enquiries.</p>
-          </article>
-
-          <article class="project-card">
-            <div class="project-visual">03 / SHOP</div>
-            <span class="project-label">Concept example</span>
-            <h3>Online Storefront</h3>
-            <p>A product showcase concept for presenting items and helping customers discover a business.</p>
-          </article>
-        </div>
-
-        <p style="text-align:center;color:var(--muted);font-size:12px;margin-top:20px;">
-          These are illustrative concepts, not claims of completed client projects.
-        </p>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <span class="eyebrow">Let's work together</span>
-          <h2>Have an Idea? Let's Build It.</h2>
-          <p>
-            Tell us about your business, your goals and what you want to
-            create. Contact AK Tech Solutions to start the conversation.
-          </p>
-
-          <a class="button"
-            href="https://wa.me/919908070815?text=Hello%20AK%20Tech%20Solutions%2C%20I%20would%20like%20to%20discuss%20a%20project."
-            target="_blank" rel="noopener noreferrer">Contact Us on WhatsApp ↗</a>
-
-          <div class="contact-details">
-            <a href="tel:+919908070815">☎ +91 9908070815</a>
-            <a href="mailto:saamzbyd@gmail.com">✉ saamzbyd@gmail.com</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <div><strong>AK Tech Solutions</strong> — Websites • Apps • Your Vision, Our Code.</div>
-      <div>© <span id="year"></span> AK Tech Solutions. All rights reserved.</div>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
+  <section id="services">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Our services</span>
+        <h2>Digital Solutions for Your Business</h2>
+        <p>Practical digital experiences planned around your goals and customers.</p>
+      </div>
+      <div class="grid">
+        <article class="card"><div class="icon">⌘</div><h3>Business Websites</h3><p>Professional websites that showcase your services, build credibility and help customers contact you.</p></article>
+        <article class="card"><div class="icon">♨</div><h3>Restaurant Websites</h3><p>Present your menu, opening information, location and customer enquiry options.</p></article>
+        <article class="card"><div class="icon">▤</div><h3>E-commerce Websites</h3><p>Online storefronts to present your products and help customers explore your range.</p></article>
+        <article class="card"><div class="icon">⌘</div><h3>Web Applications</h3><p>Custom web tools and application experiences planned around your workflow.</p></article>
+        <article class="card"><div class="icon">▣</div><h3>Mobile App Development</h3><p>Discuss your app idea, key features and a practical approach to development.</p></article>
+        <article class="card"><div class="icon">✦</div><h3>Website Refresh</h3><p>Improve an existing site's layout, content, mobile experience and calls to action.</p></article>
+      </div>
+    </div>
+  </section>
 
-    menuToggle.addEventListener("click", function () {
-      const isOpen = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.textContent = isOpen ? "×" : "☰";
-    });
+  <section id="about">
+    <div class="container about-grid">
+      <div class="brand-art"><strong>AK<span class="blue">.</span></strong><p class="blue">Your Vision, Our Code.</p></div>
+      <div>
+        <span class="eyebrow">About us</span>
+        <h2 style="font-size:36px;line-height:1.2;margin:12px 0">Thoughtful Websites. Clear Communication.</h2>
+        <p class="muted">AK Tech Solutions helps businesses develop their digital presence through websites, web applications and mobile app projects.</p>
+        <p class="muted" style="margin-top:12px">We begin by understanding your goals, audience and required features, then discuss a solution that fits your needs.</p>
+        <ul class="checks">
+          <li>Responsive layouts for mobile and desktop</li>
+          <li>Clear project discussions before work begins</li>
+          <li>Features based on your business requirements</li>
+          <li>Direct contact to discuss next steps</li>
+        </ul>
+        <a class="btn" href="#contact">Tell Us About Your Project</a>
+      </div>
+    </div>
+  </section>
 
-    document.querySelectorAll("#navLinks a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.textContent = "☰";
-      });
-    });
+  <section id="work">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Portfolio preview</span>
+        <h2>Explore Our Demo Concepts</h2>
+        <p>These are sample concepts, not claimed client projects. Replace them with real work as your portfolio grows.</p>
+      </div>
+      <div class="grid">
+        <article class="card"><div class="preview-card"><span class="blue">BUSINESS / WEB</span></div><span class="tag">Demo concept</span><h3>Business Website</h3><p>A service-business homepage with service details and clear enquiry options.</p></article>
+        <article class="card"><div class="preview-card"><span class="blue">MENU / FOOD</span></div><span class="tag">Demo concept</span><h3>Restaurant Website</h3><p>A restaurant layout for menus, opening details and location information.</p></article>
+        <article class="card"><div class="preview-card"><span class="blue">SHOP / ONLINE</span></div><span class="tag">Demo concept</span><h3>Online Storefront</h3><p>A product-led layout to help customers browse an online store.</p></article>
+      </div>
+    </div>
+  </section>
 
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <section>
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">Our process</span>
+        <h2>From Idea to Online</h2>
+        <p>Know what to expect at each stage of a project.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>1. Tell us your idea</h3><p>Share your business, goals and preferred features.</p></div>
+        <div class="step"><h3>2. Plan the scope</h3><p>Discuss pages, functionality, timeline and pricing.</p></div>
+        <div class="step"><h3>3. Build and review</h3><p>Review the agreed work and share your feedback.</p></div>
+        <div class="step"><h3>4. Prepare to launch</h3><p>Check content, domain and hosting before publishing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="section-heading"><span class="eyebrow">FAQ</span><h2>Questions Before You Start?</h2></div>
+      <div class="faq">
+        <details><summary>How much does a website cost?</summary><p class="muted">Pricing depends on the number of pages, design, features and integrations. Contact us to discuss a quote based on your requirements.</p></details>
+        <details><summary>How long does a project take?</summary><p class="muted">Timing depends on project scope, required features and how quickly content and feedback are provided.</p></details>
+        <details><summary>Will my website work on mobile?</summary><p class="muted">Responsive layouts are planned for phones, tablets and desktop screens.</p></details>
+        <details><summary>Can you improve my existing website?</summary><p class="muted">Contact us to discuss a refresh, layout improvements or additional features.</p></details>
+        <details><summary>What should I include in a quote request?</summary><p class="muted">Tell us about your business, the type of project, important features and any examples you like. Never send passwords.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <span class="eyebrow">Let's talk</span>
+        <h2>Ready to Build Something Useful?</h2>
+        <p>Tell us about your project. Complete the form to prepare a WhatsApp message you can review and send.</p>
+        <a class="btn" target="_blank" rel="noopener noreferrer" href="https://wa.me/919908070815">Chat on WhatsApp ↗</a>
+
+        <form id="projectForm">
+          <div class="form-grid">
+            <div class="field"><label for="name">Your name *</label><input id="name" name="name" required placeholder="Your name"></div>
+            <div class="field"><label for="business">Business name</label><input id="business" name="business" placeholder="Business name"></div>
+            <div class="field"><label for="service">Service required *</label>
+              <select id="service" name="service" required>
+                <option value="">Choose a service</option>
+                <option>Business website</option><option>Restaurant website</option>
+                <option>E-commerce website</option><option>Web application</option>
+                <option>Mobile app</option><option>Website refresh</option><option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field"><label for="budget">Approximate budget</label>
+              <select id="budget" name="budget">
+                <option>Prefer to discuss</option><option>Under ₹10,000</option>
+                <option>₹10,000–₹25,000</option><option>₹25,000–₹50,000</option><option>₹50,000+</option>
+              </select>
+            </div>
+            <div class="field full"><label for="details">Project details *</label><textarea id="details" name="details" required placeholder="What would you like your website or app to do?"></textarea></div>
+          </div>
+          <button class="btn" type="submit">Prepare WhatsApp Enquiry ↗</button>
+          <p class="small">This form does not store your information. It opens WhatsApp with a prepared message for you to review and send.</p>
+        </form>
+        <div class="contact-links">
+          <a href="tel:+919908070815">☎ +91 9908070815</a>
+          <a href="mailto:saamzbyd@gmail.com">✉ saamzbyd@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <strong>AK Tech Solutions</strong>
+    <span>Websites • Apps • Your Vision, Our Code.</span>
+    <span>© <span id="year"></span> AK Tech Solutions</span>
+  </div>
+</footer>
+
+<a class="whatsapp" target="_blank" rel="noopener noreferrer" href="https://wa.me/919908070815">WhatsApp ↗</a>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.getElementById("projectForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    if (!this.reportValidity()) return;
+
+    const data = new FormData(this);
+    const message = [
+      "Hello AK Tech Solutions! I'd like to discuss a project.",
+      "",
+      "Name: " + data.get("name"),
+      "Business: " + (data.get("business") || "Not provided"),
+      "Service: " + data.get("service"),
+      "Budget: " + data.get("budget"),
+      "Project details: " + data.get("details")
+    ].join("\\n");
+
+    const url = "https://wa.me/919908070815?text=" + encodeURIComponent(message);
+    window.open(url, "_blank", "noopener,noreferrer");
+  });
+</script>
 </body>
 </html>
